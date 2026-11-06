@@ -1,0 +1,17 @@
+﻿AGRISTREAM IOT LOAD TEST RESULTS
+
+Target URL: https://localhost:7103/Telemetry
+Concurrent Users: 10
+Requests Per User: 20
+Total Requests: 200
+
+Successful Requests: 200
+Failed Requests: 0
+Success Rate: 100 %
+
+Average Response Time: 82.98 ms
+Minimum Response Time: 29.12 ms
+Maximum Response Time: 516.91 ms
+
+Total Test Duration: 16.2 seconds
+Requests Per Second: 12.35

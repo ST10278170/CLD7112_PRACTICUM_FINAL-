@@ -1,0 +1,93 @@
+@model AgriStreamIoT.Models.AppUser
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<h1>Create User</h1>
+
+<h4>AgriStream User Account</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Username"
+                       class="control-label">
+                    Username
+                </label>
+
+                <input asp-for="Username"
+                       class="form-control"
+                       placeholder="Enter username" />
+
+                <span asp-validation-for="Username"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password"
+                       class="control-label">
+                    Password
+                </label>
+
+                <input asp-for="Password"
+                       type="password"
+                       class="form-control"
+                       placeholder="Enter password"
+                       autocomplete="new-password" />
+
+                <span asp-validation-for="Password"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Role"
+                       class="control-label">
+                    User Role
+                </label>
+
+                <select asp-for="Role"
+                        class="form-select">
+
+                    <option value="">-- Select Role --</option>
+                    <option value="Farmer">Farmer</option>
+                    <option value="Agronomist">Agronomist</option>
+                    <option value="Admin">Admin</option>
+
+                </select>
+
+                <span asp-validation-for="Role"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Create User
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back to Users
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

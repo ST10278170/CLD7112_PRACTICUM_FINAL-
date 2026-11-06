@@ -1,0 +1,48 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build output
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific Visual Studio files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Azure Functions local configuration
+local.settings.json
+**/local.settings.json
+
+# Azurite local emulator data
+__blobstorage__/
+__queuestorage__/
+__tablestorage__/
+**/__blobstorage__/
+**/__queuestorage__/
+**/__tablestorage__/
+
+*.blob
+*.queue
+*.table
+
+# Azurite database/cache files
+AzuriteConfig
+AzuriteConfig.*
+__azurite_db_*.json
+**/__azurite_db_*.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS-generated files
+Thumbs.db
+.DS_Store

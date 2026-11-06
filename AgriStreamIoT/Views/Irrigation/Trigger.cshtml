@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Irrigation Control";
+}
+
+<h1>Irrigation Control</h1>
+
+<p class="text-muted">
+    Submit irrigation commands to Azure Queue Storage
+    for asynchronous processing.
+</p>
+
+<hr />
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Trigger" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="form-group mb-3">
+
+                <label for="deviceId"
+                       class="control-label">
+                    Irrigation Controller
+                </label>
+
+                <select id="deviceId"
+                        name="deviceId"
+                        class="form-select"
+                        required>
+
+                    <option value="">
+                        -- Select Controller --
+                    </option>
+
+                    @foreach (var device in ViewBag.Devices)
+                    {
+                        <option value="@device.Id">
+                            @device.DeviceName - @device.FieldLocation
+                        </option>
+                    }
+
+                </select>
+
+            </div>
+
+            <div class="form-group mb-3">
+
+                <label for="command"
+                       class="control-label">
+                    Irrigation Command
+                </label>
+
+                <select id="command"
+                        name="command"
+                        class="form-select">
+
+                    <option value="StartIrrigation">
+                        Start Irrigation
+                    </option>
+
+                    <option value="StopIrrigation">
+                        Stop Irrigation
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Trigger Irrigation
+            </button>
+
+        </form>
+
+    </div>
+</div>

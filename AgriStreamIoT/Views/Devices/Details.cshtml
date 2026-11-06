@@ -1,0 +1,64 @@
+@model AgriStreamIoT.Models.Device
+
+@{
+    ViewData["Title"] = "Device Details";
+}
+
+<h1>Device Details</h1>
+
+<div>
+    <h4>AgriStream IoT Device Information</h4>
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            Device Name
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DeviceName
+        </dd>
+
+        <dt class="col-sm-3">
+            Device Type
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DeviceType
+        </dd>
+
+        <dt class="col-sm-3">
+            Field Location
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FieldLocation
+        </dd>
+
+        <dt class="col-sm-3">
+            Operational Status
+        </dt>
+        <dd class="col-sm-9">
+            @Model.OperationalStatus
+        </dd>
+
+        <dt class="col-sm-3">
+            Last Updated
+        </dt>
+        <dd class="col-sm-9">
+            @Model.LastUpdated.ToString("yyyy-MM-dd HH:mm:ss")
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit"
+       asp-route-id="@Model.Id"
+       class="btn btn-primary">
+        Edit Device
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back to Devices
+    </a>
+</div>

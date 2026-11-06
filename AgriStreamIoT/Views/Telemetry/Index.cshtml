@@ -1,0 +1,110 @@
+﻿@model IEnumerable<AgriStreamIoT.Models.SensorTelemetry>
+
+@{
+    ViewData["Title"] = "Telemetry Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h1>Field Telemetry Dashboard</h1>
+
+        <p class="text-muted">
+            Real-time agricultural sensor readings stored in
+            Azure Table Storage.
+        </p>
+    </div>
+
+    <a asp-action="Create"
+       class="btn btn-primary">
+        Simulate Sensor Reading
+    </a>
+
+</div>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">
+        No telemetry readings have been received yet.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+
+        <table class="table table-striped table-bordered align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Device</th>
+                    <th>Field</th>
+                    <th>Soil Moisture</th>
+                    <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Irrigation</th>
+                    <th>Recorded</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.DeviceName
+                        </td>
+
+                        <td>
+                            @item.FieldLocation
+                        </td>
+
+                        <td>
+                            @(item.SoilMoisture.ToString("0.0"))%
+                        </td>
+
+                        <td>
+                            @(item.Temperature.ToString("0.0")) °C
+                        </td>
+
+                        <td>
+                            @(item.Humidity.ToString("0.0"))%
+                        </td>
+
+                        <td>
+                            @if (item.IrrigationStatus == "Required")
+                            {
+                                <span class="badge bg-danger">
+                                    Required
+                                </span>
+                            }
+                            else if (item.IrrigationStatus == "Active")
+                            {
+                                <span class="badge bg-success">
+                                    Active
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">
+                                    Inactive
+                                </span>
+                            }
+                        </td>
+
+                        <td>
+                            @(item.RecordedAt
+                                .ToLocalTime()
+                                .ToString("yyyy-MM-dd HH:mm:ss"))
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+}

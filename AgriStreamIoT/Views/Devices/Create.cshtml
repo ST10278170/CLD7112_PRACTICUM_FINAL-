@@ -1,0 +1,126 @@
+@model AgriStreamIoT.Models.Device
+
+@{
+    ViewData["Title"] = "Register Device";
+}
+
+<h1>Register Device</h1>
+
+<h4>AgriStream IoT Device Registry</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DeviceName"
+                       class="control-label">
+                    Device Name
+                </label>
+
+                <input asp-for="DeviceName"
+                       class="form-control"
+                       placeholder="e.g. Soil Sensor 01" />
+
+                <span asp-validation-for="DeviceName"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DeviceType"
+                       class="control-label">
+                    Device Type
+                </label>
+
+                <select asp-for="DeviceType"
+                        class="form-select">
+
+                    <option value="">-- Select Device Type --</option>
+                    <option value="Soil Moisture Sensor">
+                        Soil Moisture Sensor
+                    </option>
+                    <option value="Temperature Sensor">
+                        Temperature Sensor
+                    </option>
+                    <option value="Humidity Sensor">
+                        Humidity Sensor
+                    </option>
+                    <option value="Irrigation Controller">
+                        Irrigation Controller
+                    </option>
+                    <option value="Weather Sensor">
+                        Weather Sensor
+                    </option>
+                    <option value="Drone">
+                        Drone
+                    </option>
+
+                </select>
+
+                <span asp-validation-for="DeviceType"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FieldLocation"
+                       class="control-label">
+                    Field Location
+                </label>
+
+                <input asp-for="FieldLocation"
+                       class="form-control"
+                       placeholder="e.g. Field A - North" />
+
+                <span asp-validation-for="FieldLocation"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="OperationalStatus"
+                       class="control-label">
+                    Operational Status
+                </label>
+
+                <select asp-for="OperationalStatus"
+                        class="form-select">
+
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Irrigating">Irrigating</option>
+
+                </select>
+
+                <span asp-validation-for="OperationalStatus"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Register Device
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Back to Devices
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

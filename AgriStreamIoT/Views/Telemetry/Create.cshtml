@@ -1,0 +1,126 @@
+﻿@model AgriStreamIoT.Models.SensorTelemetry
+
+@{
+    ViewData["Title"] = "Record Telemetry";
+}
+
+<h1>Record Sensor Telemetry</h1>
+
+<p class="text-muted">
+    Simulate real-time telemetry received from an AgriStream field device.
+</p>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DeviceId"
+                       class="control-label">
+                    Registered Device
+                </label>
+
+                <select asp-for="DeviceId"
+                        class="form-select">
+
+                    <option value="0">
+                        -- Select Device --
+                    </option>
+
+                    @foreach (var device in ViewBag.Devices)
+                    {
+                        <option value="@device.Id">
+                            @device.DeviceName - @device.FieldLocation
+                        </option>
+                    }
+
+                </select>
+
+                <span asp-validation-for="DeviceId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="SoilMoisture"
+                       class="control-label">
+                    Soil Moisture (%)
+                </label>
+
+                <input asp-for="SoilMoisture"
+                       class="form-control"
+                       type="number"
+                       step="0.1"
+                       min="0"
+                       max="100" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Temperature"
+                       class="control-label">
+                    Temperature (°C)
+                </label>
+
+                <input asp-for="Temperature"
+                       class="form-control"
+                       type="number"
+                       step="0.1" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Humidity"
+                       class="control-label">
+                    Humidity (%)
+                </label>
+
+                <input asp-for="Humidity"
+                       class="form-control"
+                       type="number"
+                       step="0.1"
+                       min="0"
+                       max="100" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="IrrigationStatus"
+                       class="control-label">
+                    Irrigation Status
+                </label>
+
+                <select asp-for="IrrigationStatus"
+                        class="form-select">
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Required">
+                        Required
+                    </option>
+
+                </select>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Record Telemetry
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back to Dashboard
+            </a>
+
+        </form>
+
+    </div>
+</div>

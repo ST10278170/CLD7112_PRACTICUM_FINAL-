@@ -1,0 +1,23 @@
+﻿AGRISTREAM IOT LOCAL SCALING SIMULATION
+
+Current Instances: 1
+Minimum Instances: 1
+Maximum Instances: 5
+
+Observed Load:
+Total Requests: 200
+Success Rate: 100 %
+Average Response Time: 70.24 ms
+Maximum Response Time: 147.48 ms
+Requests Per Second: 12.35
+
+Scaling Decision:
+Action: SCALE OUT
+Current Instances: 1
+Recommended Instances: 2
+Reason: Peak response time or request throughput exceeded the local scaling threshold.
+
+NOTE:
+This is a local simulation of an Azure-style scaling policy.
+Actual Azure App Service autoscaling was not performed because
+an active Azure subscription was not available.

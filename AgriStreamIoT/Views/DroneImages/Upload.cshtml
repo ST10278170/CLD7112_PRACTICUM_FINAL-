@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Drone Image Upload";
+}
+
+<h1>Drone Image Upload</h1>
+
+<p class="text-muted">
+    Upload agricultural drone imagery to Azure Blob Storage.
+</p>
+
+<hr />
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Success
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Upload"
+              method="post"
+              enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="form-group mb-3">
+
+                <label for="droneImage"
+                       class="control-label">
+                    Drone Image
+                </label>
+
+                <input type="file"
+                       id="droneImage"
+                       name="droneImage"
+                       class="form-control"
+                       accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+
+                <div class="form-text">
+                    Select a JPG, PNG or WebP agricultural drone image.
+                </div>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Upload Drone Image
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+@if (ViewBag.ImageUrl != null)
+{
+    <div class="mt-4">
+
+        <h4>Blob Storage Result</h4>
+
+        <p>
+            <strong>Blob URL:</strong>
+            @ViewBag.ImageUrl
+        </p>
+
+    </div>
+}

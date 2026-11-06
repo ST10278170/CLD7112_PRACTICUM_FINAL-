@@ -1,0 +1,71 @@
+@model AgriStreamIoT.Models.Device
+
+@{
+    ViewData["Title"] = "Delete Device";
+}
+
+<h1>Delete Device</h1>
+
+<div class="alert alert-warning">
+    Are you sure you want to remove this device from the AgriStream IoT device registry?
+</div>
+
+<div>
+    <h4>Device Information</h4>
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            Device Name
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DeviceName
+        </dd>
+
+        <dt class="col-sm-3">
+            Device Type
+        </dt>
+        <dd class="col-sm-9">
+            @Model.DeviceType
+        </dd>
+
+        <dt class="col-sm-3">
+            Field Location
+        </dt>
+        <dd class="col-sm-9">
+            @Model.FieldLocation
+        </dd>
+
+        <dt class="col-sm-3">
+            Operational Status
+        </dt>
+        <dd class="col-sm-9">
+            @Model.OperationalStatus
+        </dd>
+
+        <dt class="col-sm-3">
+            Last Updated
+        </dt>
+        <dd class="col-sm-9">
+            @Model.LastUpdated.ToString("yyyy-MM-dd HH:mm:ss")
+        </dd>
+
+    </dl>
+
+    <form asp-action="Delete" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit"
+                class="btn btn-danger">
+            Delete Device
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+</div>
